@@ -106,12 +106,15 @@
 
   /* ── Franja de marca (recreación nativa del banner) ─────────── */
   .marca-band{
-    background:linear-gradient(135deg,var(--teal-900) 0%,var(--teal-700) 62%,var(--teal-600) 100%);
-    color:#fff;position:relative;overflow:hidden;
+    background:var(--white);position:relative;overflow:hidden;
+    border-bottom:1px solid var(--line);
   }
   .marca-band::after{
     content:"";position:absolute;inset:0;pointer-events:none;
-    background:radial-gradient(560px 220px at 82% 12%,rgba(94,234,212,.22),transparent 68%);
+    background:radial-gradient(520px 200px at 78% 10%,rgba(20,184,166,.07),transparent 70%);
+  }
+  .marca-band img{
+    display:block;width:100%;max-width:min(100%,460px);height:auto;margin:0 auto;
   }
   .marca-band .wrap{
     position:relative;z-index:1;display:flex;align-items:center;justify-content:center;
@@ -453,10 +456,6 @@
   }
   @media (max-width:420px){
     /* La franja de marca se compacta para no empujar el botón de agendar */
-    .marca-band .wrap{padding-block:12px;gap:11px}
-    .marca-band .mono{width:44px;height:44px;font-size:1rem;border-radius:12px}
-    .marca-band .lockup .ced{display:none}
-    .marca-band .lockup .rol{letter-spacing:.1em;margin-top:3px}
     .hero{padding-top:34px}
     .hero .lede{font-size:1rem;margin-bottom:22px}
   }
@@ -477,13 +476,9 @@
 
 <!-- ══ Franja de marca (recreada del banner, en su paleta) ══ -->
 <div class="marca-band">
-  <div class="wrap">
-    <span class="logo-mark"><svg viewBox="0 0 100 100" aria-hidden="true"><ellipse cx="50" cy="50" rx="45" ry="25" fill="none" stroke="#0b1d3a" stroke-width="4.5"/><text x="50" y="62" font-size="34" font-weight="bold" fill="#0b1d3a" text-anchor="middle" font-family="Arial, Helvetica, sans-serif">OZ</text></svg></span>
-    <span class="lockup">
-      <strong>Dra. Cristina Zúñiga Avilés</strong>
-      <span class="rol">Médico Cirujano Oftalmóloga</span>
-      <span class="ced">Céd. Prof. 1357548 &nbsp;·&nbsp; Céd. de Esp. 3182007</span>
-    </span>
+  <div class="wrap" style="padding-block:clamp(14px,2.2vw,22px)">
+    <img src="banner.webp" width="1024" height="559"
+         alt="Dra. Cristina Zúñiga — Médico Cirujano Oftalmólogo · Céd. Prof. 1357548 · Céd. de Esp. 3182007">
   </div>
 </div>
 
@@ -532,7 +527,7 @@
       <span class="eyebrow"><span class="dot"></span> Oftalmología en Apatzingán, Michoacán</span>
       <h1>Dra. Cristina Zúñiga Avilés</h1>
       <p class="role">Médico Cirujano Oftalmóloga</p>
-            <div class="actions">
+      <div class="actions">
         <a class="btn btn-wa btn-lg" href="https://wa.me/524535311006?text=Hola%20doctora%20Cristina%2C%20quiero%20agendar%20una%20consulta%20oftalmol%C3%B3gica." target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.5 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1a12 12 0 0 1-5.6-4.7c-.4-.7-.6-1.4-.6-2 0-.6.3-1.3.7-1.7.2-.2.4-.3.6-.3h.5c.2 0 .3.1.5.4l.6 1.5c.1.2 0 .4-.1.5l-.4.5c-.1.2-.3.3-.1.6.2.4.7 1.1 1.3 1.6.7.6 1.3.8 1.5 1 .2.1.4 0 .5-.1l.6-.7c.2-.2.3-.2.5-.1l1.4.7c.2.1.4.2.4.4v.7Z"/></svg>
           Agendar cita por WhatsApp
