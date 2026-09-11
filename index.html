@@ -48,7 +48,28 @@
 </script>
 
 <style>
+  /* Fraunces: serif variable con eje óptico y "wonk". Auto-hospedada. */
+  @font-face{
+    font-family:'Fraunces';font-style:normal;font-weight:600 900;font-display:swap;
+    src:url('fuentes/fraunces-normal-latin.woff2') format('woff2');
+  }
+  @font-face{
+    font-family:'Fraunces';font-style:italic;font-weight:600;font-display:swap;
+    src:url('fuentes/fraunces-italic-latin.woff2') format('woff2');
+  }
   :root{
+    /* Tipografía */
+    --display:'Fraunces',Georgia,'Times New Roman',serif;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    /* Fondos: crema en vez de blanco puro (el #FFFFFF es un tell de plantilla) */
+    --bone:#FAF6F0;
+    --bone-2:#F3EDE3;
+    --paper:#FFFFFF;
+    /* Acento inesperado: terracota. Aparece solo en detalles. */
+    --clay:#B85C38;
+    --clay-700:#8F4325;
+    --clay-100:#F2DCD1;
+    --clay-50:#FBF1EB;
     --teal-900:#0b3f3c;
     --teal-800:#0f5c56;
     --teal-700:#0f766e;
@@ -86,20 +107,22 @@
   html{scroll-behavior:smooth}
   body{
     margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-family:var(--sans);
     color:var(--ink);
-    background:var(--white);
-    /* Pacientes de la vista: texto grande por defecto */
-    font-size:19px;
-    line-height:1.65;
+    background:var(--bone);
+    /* Cuerpo más refinado; los títulos cargan el peso visual */
+    font-size:17.5px;
+    line-height:1.72;
     -webkit-font-smoothing:antialiased;
   }
   img{max-width:100%;display:block}
   a{color:inherit}
-  h1,h2,h3{line-height:1.18;margin:0;letter-spacing:-.02em;font-weight:800}
-  h1{font-size:clamp(2.1rem,5.4vw,3.6rem)}
-  h2{font-size:clamp(1.6rem,3.6vw,2.5rem)}
-  h3{font-size:1.2rem}
+  /* Títulos en Fraunces: mucho más grandes que el cuerpo */
+  h1,h2,h3{font-family:var(--display);margin:0;font-weight:700;
+           font-variation-settings:'SOFT' 20,'WONK' 1;letter-spacing:-.015em}
+  h1{font-size:clamp(2.5rem,6.4vw,4.7rem);line-height:1.02}
+  h2{font-size:clamp(1.95rem,4.3vw,3.15rem);line-height:1.08}
+  h3{font-size:1.22rem;line-height:1.25;font-weight:600}
   p{margin:0}
   .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:22px}
   .section{padding:clamp(56px,8vw,104px) 0}
@@ -179,13 +202,36 @@
   }
   .btn svg{width:20px;height:20px;flex:none}
   .btn-primary{background:var(--teal-700);color:#fff;box-shadow:0 10px 26px rgba(15,118,110,.30)}
-  .btn-primary:hover{background:var(--teal-800);transform:translateY(-2px);box-shadow:0 16px 34px rgba(15,118,110,.36)}
+  .btn-primary:hover{background:var(--teal-800);transform:translateY(-3px);box-shadow:0 18px 38px rgba(15,118,110,.38)}
   .btn-ghost{background:#fff;color:var(--teal-800);border-color:var(--line)}
   .btn-ghost:hover{border-color:var(--teal-500);transform:translateY(-2px)}
   .btn-wa{background:#25D366;color:#08301a;box-shadow:0 10px 26px rgba(37,211,102,.32)}
   .btn-wa:hover{background:#1fbe5a;transform:translateY(-2px)}
   .btn-lg{padding:18px 34px;font-size:1.08rem}
   .btn-sm{padding:11px 19px;font-size:1rem}
+
+  /* ── Sello de ojo: recurso de marca reutilizable ─────────────── */
+  .ojo-sello{width:58px;height:auto;display:block;color:var(--clay)}
+  .sello-sep{display:flex;justify-content:center;padding:6px 0 0}
+  .sello-sep .ojo-sello{width:46px;opacity:.75}
+
+  /* ── Pausa editorial: el eslogan como momento ─────────────────── */
+  .pausa{
+    background:var(--bone-2);text-align:center;
+    padding:clamp(70px,11vw,150px) 0;
+  }
+  .pausa blockquote{
+    margin:0 auto;max-width:20ch;
+    font-family:var(--display);font-style:italic;font-weight:600;
+    font-size:clamp(2rem,5.4vw,4rem);line-height:1.06;
+    color:var(--teal-900);letter-spacing:-.015em;
+  }
+  .pausa blockquote em{font-style:normal;color:var(--clay-700)}
+  .pausa .ojo-sello{width:64px;margin:0 auto clamp(24px,3.4vw,38px);color:var(--clay)}
+  .pausa p{
+    margin:clamp(24px,3.4vw,36px) auto 0;max-width:44ch;
+    color:var(--ink-soft);font-size:1.02rem;
+  }
 
   /* ── Héroe ──────────────────────────────────────────────────── */
   .hero{
@@ -197,7 +243,7 @@
       linear-gradient(180deg,#fbfefd 0%,var(--white) 44%);
     padding:clamp(52px,7vw,92px) 0 clamp(60px,8vw,104px);
   }
-  .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(28px,5vw,64px);align-items:center}
+  .hero-grid{display:grid;grid-template-columns:1.24fr .76fr;gap:clamp(26px,4.6vw,68px);align-items:center}
   .eyebrow{
     display:inline-flex;align-items:center;gap:9px;
     background:var(--teal-50);color:var(--teal-800);
@@ -222,6 +268,11 @@
   .chips b{color:var(--ink)}
 
   /* Panel de retrato (placeholder elegante hasta tener foto real) */
+  .hero-copy{padding-left:clamp(0px,2.2vw,38px)}
+  /* En pantallas anchas el retrato sangra hasta el borde derecho */
+  @media (min-width:1080px){
+    .portrait{margin-right:calc((100vw - var(--maxw)) / -2);border-radius:28px 0 0 28px}
+  }
   .portrait{
     position:relative;border-radius:26px;overflow:hidden;
     background:linear-gradient(155deg,var(--teal-700),var(--teal-900));
@@ -257,7 +308,9 @@
   .badge-float svg{width:22px;height:22px;color:var(--teal-600);flex:none}
 
   /* ── Servicios ──────────────────────────────────────────────── */
-  .band{background:var(--teal-50)}
+  .band{background:var(--bone-2)}
+  .band-teal{background:#EFF6F4}
+  .band-clay{background:var(--clay-50)}
   .band-aqua{background:var(--aqua-50)}
   .band-warm{background:var(--amber-50)}
   .band-coral{background:var(--coral-50)}
@@ -273,6 +326,8 @@
   .checks li:nth-child(3) .tick{background:var(--amber-600)}
   .checks li:nth-child(4) .tick{background:var(--coral-600)}
   .head{max-width:62ch;margin:0 auto clamp(38px,5vw,60px);text-align:center}
+  .head--left{text-align:left;margin-inline:0}
+  .wrap-narrow{max-width:820px}
   .head .kicker{
     display:block;font-size:.83rem;font-weight:800;letter-spacing:.12em;
     text-transform:uppercase;color:var(--teal-800);margin-bottom:13px;
@@ -280,7 +335,7 @@
   .head p{margin-top:15px;color:var(--ink-soft);font-size:1.06rem}
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(288px,1fr));gap:22px}
   .card{
-    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
     padding:30px 28px;box-shadow:var(--shadow-sm);
     transition:transform .18s ease,box-shadow .22s ease,border-color .22s ease;
   }
@@ -330,7 +385,7 @@
     display:grid;place-items:center;
   }
   .alert .warn svg{width:30px;height:30px}
-  .alert h2{font-size:clamp(1.6rem,3.6vw,2.5rem);color:#7c3d06;margin-bottom:12px;letter-spacing:-.02em}
+  .alert h2{color:#7c3d06;margin-bottom:12px}
   .alert p{color:#6b4a20}
   .alert p + p{margin-top:12px}
 
@@ -475,7 +530,29 @@
   .wa-float .txt{font-size:.98rem}
 
   /* ── Animación de entrada ───────────────────────────────────── */
-  .rise{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  /* Micro-interacciones: discretas, no llamativas */
+  .rise{opacity:0;transform:translateY(26px);
+        transition:opacity .75s cubic-bezier(.22,.68,.32,1),transform .75s cubic-bezier(.22,.68,.32,1)}
+  .rise.in{opacity:1;transform:none}
+  /* Las tarjetas entran escalonadas */
+  .cards .card:nth-child(2){transition-delay:.07s}
+  .cards .card:nth-child(3){transition-delay:.14s}
+  .cards .card:nth-child(4){transition-delay:.21s}
+  .cards .card:nth-child(5){transition-delay:.07s}
+  .cards .card:nth-child(6){transition-delay:.14s}
+  .signals .signal:nth-child(2){transition-delay:.09s}
+  .signals .signal:nth-child(3){transition-delay:.18s}
+  /* Enlaces con subrayado que crece */
+  .pie-linea a,.pie-datos a{position:relative}
+  .pie-linea a::after{
+    content:"";position:absolute;left:0;right:0;bottom:2px;height:1px;
+    background:currentColor;transform:scaleX(0);transform-origin:left;
+    transition:transform .3s cubic-bezier(.22,.68,.32,1);
+  }
+  .pie-linea a:hover::after{transform:scaleX(1)}
+  /* El sello de ojo late muy despacio */
+  @keyframes latido{0%,100%{transform:scale(1);opacity:.75}50%{transform:scale(1.05);opacity:.95}}
+  .sello-sep .ojo-sello{animation:latido 6s ease-in-out infinite}
   .rise.in{opacity:1;transform:none}
 
   /* ── Responsive ─────────────────────────────────────────────── */
@@ -521,6 +598,9 @@
     .wrap{padding-inline:16px}
   }
   @media (prefers-reduced-motion:reduce){
+    .sello-sep .ojo-sello{animation:none}
+    .rise{transition:none}
+    .cards .card,.signals .signal{transition-delay:0s!important}
     *,*::before,*::after{animation:none!important;transition:none!important}
     html{scroll-behavior:auto}
     .rise{opacity:1;transform:none}
@@ -594,7 +674,7 @@
 <!-- ══ Héroe ══ -->
 <section class="hero" id="inicio">
   <div class="wrap hero-grid">
-    <div>
+    <div class="hero-copy">
       <span class="eyebrow"><span class="dot"></span> Oftalmología en Apatzingán, Michoacán</span>
       <h1>Dra. Cristina Zúñiga Avilés</h1>
       <p class="role">Médico Cirujano Oftalmóloga</p>
@@ -720,6 +800,8 @@
       <p>Muchas enfermedades de los ojos avanzan sin dolor y sin avisar. Detectarlas a tiempo es lo que salva la visión.</p>
     </div>
 
+    <div class="sello-sep"><svg class="ojo-sello" viewBox="0 0 100 46" aria-hidden="true"><path d="M4 23C24 5 76 5 96 23 76 41 24 41 4 23Z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/><circle cx="50" cy="23" r="11" fill="none" stroke="currentColor" stroke-width="5"/><circle cx="50" cy="23" r="4" fill="currentColor"/></svg></div>
+
     <div class="signals">
       <div class="signal signal--a rise">
         <div class="n">01</div>
@@ -750,7 +832,7 @@
 </section>
 
 <!-- ══ Importancia del examen ══ -->
-<section class="section band-aqua" id="porque">
+<section class="section band-teal" id="porque">
   <div class="wrap split">
     <div>
       <span class="kicker">Por qué revisarte cada año</span>
@@ -861,6 +943,8 @@
       <p>Fácil de llegar, en plena zona centro. Si vienes de fuera, escríbenos por WhatsApp y te mandamos la ubicación exacta.</p>
     </div>
 
+    <div class="sello-sep"><svg class="ojo-sello" viewBox="0 0 100 46" aria-hidden="true"><path d="M4 23C24 5 76 5 96 23 76 41 24 41 4 23Z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/><circle cx="50" cy="23" r="11" fill="none" stroke="currentColor" stroke-width="5"/><circle cx="50" cy="23" r="4" fill="currentColor"/></svg></div>
+
     <div class="loc">
       <div class="loc-card">
         <div class="loc-row">
@@ -902,6 +986,17 @@
   </div>
 </section>
 
+<!-- ══ Pausa editorial: el eslogan como momento ══ -->
+<section class="pausa" id="historias">
+  <div class="wrap wrap-narrow">
+    <svg class="ojo-sello" viewBox="0 0 100 46" aria-hidden="true"><path d="M4 23C24 5 76 5 96 23 76 41 24 41 4 23Z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/><circle cx="50" cy="23" r="11" fill="none" stroke="currentColor" stroke-width="5"/><circle cx="50" cy="23" r="4" fill="currentColor"/></svg>
+    <blockquote>
+      Tus ojos cuentan historias. <em>¡Cuidemos tus ojos juntos!</em>
+    </blockquote>
+    <p>Detectar a tiempo los problemas visuales mejora tu calidad de vida.</p>
+  </div>
+</section>
+
 <!-- ══ Dudas frecuentes ══ -->
 <section class="section" id="dudas">
   <div class="wrap">
@@ -936,9 +1031,6 @@
 <!-- ══ Cierre ══ -->
 <section class="section closing" id="agendar">
   <div class="wrap">
-    <p style="font-weight:700;color:#8fd8ce;letter-spacing:.02em;margin-bottom:14px;font-size:1.05rem">
-      Tus ojos cuentan historias. ¡Cuidemos tus ojos juntos!
-    </p>
     <h2>Tu salud visual no espera</h2>
     <p>Agenda tu consulta hoy. Escríbenos por WhatsApp y te confirmamos el horario disponible.</p>
     <div class="actions">
