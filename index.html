@@ -140,16 +140,29 @@
   .topbar svg{width:15px;height:15px;flex:none}
 
   /* ── Franja de marca (recreación nativa del banner) ─────────── */
+  /* Franja de firma: la marca la lleva la tipografía, sin imágenes ni
+     símbolos. Es lo que hacen los despachos serios. */
   .marca-band{
-    background:var(--white);position:relative;overflow:hidden;
-    border-bottom:1px solid var(--line);
+    background:var(--bone);border-bottom:1px solid var(--line);
+  }
+  .marca-firma{
+    text-align:center;padding-block:clamp(18px,2.6vw,28px);
+  }
+  .marca-firma strong{
+    display:block;font-family:var(--display);font-weight:700;
+    font-size:clamp(1.3rem,3.2vw,2rem);line-height:1.1;
+    letter-spacing:-.02em;color:var(--brand-deep);
+  }
+  .marca-firma .rol{
+    display:block;margin-top:6px;font-size:clamp(.72rem,1.8vw,.84rem);
+    letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--brand-dark);
+  }
+  .marca-firma .ced{
+    display:block;margin-top:6px;font-size:.78rem;color:var(--ink-soft);
   }
   .marca-band::after{
     content:"";position:absolute;inset:0;pointer-events:none;
     background:radial-gradient(520px 200px at 78% 10%,rgba(20,184,166,.07),transparent 70%);
-  }
-  .marca-band img{
-    display:block;width:100%;max-width:min(100%,440px);height:auto;margin:0 auto;
   }
   .marca-band .wrap{
     position:relative;z-index:1;display:flex;align-items:center;justify-content:center;
@@ -620,9 +633,10 @@
 
 <!-- ══ Franja de marca (recreada del banner, en su paleta) ══ -->
 <div class="marca-band">
-  <div class="wrap" style="padding-block:clamp(14px,2.2vw,22px)">
-    <img src="banner.webp" width="1024" height="559"
-         alt="Dra. Cristina Zúñiga — Médico Cirujano Oftalmólogo · Céd. Prof. 1357548 · Céd. de Esp. 3182007">
+  <div class="wrap marca-firma">
+    <strong>Dra. Cristina Zúñiga Avilés</strong>
+    <span class="rol">Médico Cirujano Oftalmóloga</span>
+    <span class="ced">Céd. Prof. 1357548 &nbsp;·&nbsp; Céd. de Esp. 3182007</span>
   </div>
 </div>
 
