@@ -63,6 +63,18 @@
     --white:#ffffff;
     --amber:#b45309;
     --amber-bg:#fff8ec;
+    /* familias complementarias: color sin salir de lo médico */
+    --aqua-700:#0e7490;
+    --aqua-600:#0891b2;
+    --aqua-100:#dff2f6;
+    --aqua-50:#eff9fb;
+    --coral-700:#b3402b;
+    --coral-600:#c2410c;
+    --coral-100:#fde5e0;
+    --coral-50:#fff4f1;
+    --amber-600:#d97706;
+    --amber-100:#fbe7c6;
+    --amber-50:#fffaf1;
     --radius:18px;
     --shadow-sm:0 2px 8px rgba(11,63,60,.06);
     --shadow:0 14px 40px rgba(11,63,60,.10);
@@ -180,8 +192,9 @@
     position:relative;overflow:hidden;
     background:
       radial-gradient(1100px 520px at 88% -12%,var(--teal-100) 0%,transparent 62%),
-      radial-gradient(760px 420px at -8% 108%,#e9fbf6 0%,transparent 60%),
-      var(--white);
+      radial-gradient(720px 430px at -10% 106%,var(--aqua-100) 0%,transparent 62%),
+      radial-gradient(600px 340px at 64% 116%,var(--amber-50) 0%,transparent 70%),
+      linear-gradient(180deg,#fbfefd 0%,var(--white) 44%);
     padding:clamp(52px,7vw,92px) 0 clamp(60px,8vw,104px);
   }
   .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(28px,5vw,64px);align-items:center}
@@ -239,6 +252,24 @@
 
   /* ── Servicios ──────────────────────────────────────────────── */
   .band{background:var(--teal-50)}
+  .band-aqua{background:var(--aqua-50)}
+  .band-warm{background:var(--amber-50)}
+  .band-coral{background:var(--coral-50)}
+
+  /* Cada servicio con su color de icono */
+  .ico--teal{background:var(--teal-50);border-color:var(--teal-100);color:var(--teal-700)}
+  .ico--aqua{background:var(--aqua-100);border-color:#bfe6ee;color:var(--aqua-700)}
+  .ico--amber{background:var(--amber-100);border-color:#f0d5a8;color:var(--amber)}
+  .ico--coral{background:var(--coral-100);border-color:#f7cdc4;color:var(--coral-700)}
+  .card .ico{transition:transform .22s ease}
+  .card:hover .ico{transform:scale(1.08) rotate(-4deg)}
+
+
+
+  .checks li:nth-child(1) .tick{background:var(--teal-700)}
+  .checks li:nth-child(2) .tick{background:var(--aqua-600)}
+  .checks li:nth-child(3) .tick{background:var(--amber-600)}
+  .checks li:nth-child(4) .tick{background:var(--coral-600)}
   .head{max-width:62ch;margin:0 auto clamp(38px,5vw,60px);text-align:center}
   .head .kicker{
     display:block;font-size:.83rem;font-weight:800;letter-spacing:.12em;
@@ -469,6 +500,16 @@
     html{scroll-behavior:auto}
     .rise{opacity:1;transform:none}
   }
+  /* ── Colores de acento: van al final para ganar en cascada ──── */
+  .head .kicker--aqua{color:var(--aqua-700)}
+  .head .kicker--amber{color:var(--amber)}
+  .head .kicker--coral{color:var(--coral-700)}
+  .signal--a{border-left-color:var(--teal-500)}
+  .signal--a .n{color:var(--teal-500)}
+  .signal--b{border-left-color:var(--aqua-600)}
+  .signal--b .n{color:var(--aqua-600)}
+  .signal--c{border-left-color:var(--amber-600)}
+  .signal--c .n{color:var(--amber-600)}
 </style>
 <noscript><style>.rise{opacity:1;transform:none}</style></noscript>
 </head>
@@ -578,49 +619,49 @@
 
     <div class="cards">
       <article class="card rise">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"/></svg></div>
+        <div class="ico ico--teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"/></svg></div>
         <h3>Examen de la vista</h3>
         <p>Examen ocular completo: evaluación ocular, refracción (graduación) y pruebas de lágrima, con mediciones de queratometría o topografía.</p>
       </article>
 
       <article class="card rise">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8l7-5 7 5M5 8v8l7 5 7-5V8"/></svg></div>
+        <div class="ico ico--aqua"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8l7-5 7 5M5 8v8l7 5 7-5V8"/></svg></div>
         <h3>Microcirugía ocular</h3>
         <p>Procedimientos con el máximo cuidado y exactitud, para tratar tu visión con la precisión que tus ojos merecen.</p>
       </article>
 
       <article class="card rise">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10a7 7 0 0 1 14 0c0 5.6-7 10-7 10Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <div class="ico ico--amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10a7 7 0 0 1 14 0c0 5.6-7 10-7 10Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
         <h3>Enfermedades de los ojos</h3>
         <p>Catarata, glaucoma, conjuntivitis y las demás afecciones oculares más comunes: diagnóstico y tratamiento explicados sin tecnicismos.</p>
       </article>
 
       <article class="card rise">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="14" r="3.4"/><circle cx="18" cy="14" r="3.4"/><path d="M9.4 14h5.2M3 11l2-3M21 11l-2-3"/></svg></div>
+        <div class="ico ico--coral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="14" r="3.4"/><circle cx="18" cy="14" r="3.4"/><path d="M9.4 14h5.2M3 11l2-3M21 11l-2-3"/></svg></div>
         <h3>Lentes y graduación</h3>
         <p>Prueba de lentes, selección y seguimiento. Si sientes que los tuyos ya no te funcionan igual, es momento de actualizarlos.</p>
       </article>
 
       <article class="card rise">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c2.5-4 6-6 9-6s6.5 2 9 6c-2.5 4-6 6-9 6s-6.5-2-9-6Z"/><path d="M12 9.5a2.5 2.5 0 1 0 0 5"/></svg></div>
+        <div class="ico ico--teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c2.5-4 6-6 9-6s6.5 2 9 6c-2.5 4-6 6-9 6s-6.5-2-9-6Z"/><path d="M12 9.5a2.5 2.5 0 1 0 0 5"/></svg></div>
         <h3>Lentes de contacto</h3>
         <p>Adaptación y enseñanza de uso correcto, para que los uses con seguridad y sin dañar tu vista.</p>
       </article>
 
       <article class="card rise">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></div>
+        <div class="ico ico--aqua"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></div>
         <h3>Salud visual infantil</h3>
         <p>Los niños muchas veces no saben que ven mal. Una revisión a tiempo evita problemas de aprendizaje y de atención en la escuela.</p>
       </article>
 
       <article class="card rise">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="ico ico--amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
         <h3>Lentes para computadora</h3>
         <p>Ayudan a reducir la fatiga visual: filtran la luz azul y dan comodidad al trabajar frente a pantallas. Ideales si pasas muchas horas en celular, tablet o computadora.</p>
       </article>
 
       <article class="card rise">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3Z"/><path d="M12 8v4M12 15h.01"/></svg></div>
+        <div class="ico ico--coral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3Z"/><path d="M12 8v4M12 15h.01"/></svg></div>
         <h3>Protección UV y prevención</h3>
         <p>La exposición al sol daña tus ojos sin que lo notes. Te asesoramos sobre filtro UV y hábitos que protegen tu visión.</p>
       </article>
@@ -639,23 +680,23 @@
 <section class="section" id="senales">
   <div class="wrap">
     <div class="head">
-      <span class="kicker">No lo dejes pasar</span>
+      <span class="kicker kicker--aqua">No lo dejes pasar</span>
       <h2>3 señales de que necesitas revisión ocular</h2>
       <p>Muchas enfermedades de los ojos avanzan sin dolor y sin avisar. Detectarlas a tiempo es lo que salva la visión.</p>
     </div>
 
     <div class="signals">
-      <div class="signal rise">
+      <div class="signal signal--a rise">
         <div class="n">01</div>
         <h3>Ves borroso o tienes que entrecerrar los ojos</h3>
         <p>Si tienes que acercar el celular, alejar el libro o forzar la vista para leer, tu graduación probablemente cambió.</p>
       </div>
-      <div class="signal rise">
+      <div class="signal signal--b rise">
         <div class="n">02</div>
         <h3>Dolor de cabeza al final del día</h3>
         <p>El esfuerzo constante por enfocar cansa los ojos y termina en dolor de cabeza, sobre todo al usar pantallas.</p>
       </div>
-      <div class="signal rise">
+      <div class="signal signal--c rise">
         <div class="n">03</div>
         <h3>Ojo rojo, ardor o sensación de arena</h3>
         <p>La irritación que no se va sola puede ser una infección o un problema que necesita tratamiento, no gotas caseras.</p>
@@ -674,7 +715,7 @@
 </section>
 
 <!-- ══ Importancia del examen ══ -->
-<section class="section band" id="porque">
+<section class="section band-aqua" id="porque">
   <div class="wrap split">
     <div>
       <span class="kicker">Por qué revisarte cada año</span>
@@ -824,7 +865,7 @@
 <section class="section" id="dudas">
   <div class="wrap">
     <div class="head">
-      <span class="kicker">Antes de venir</span>
+      <span class="kicker kicker--coral">Antes de venir</span>
       <h2>Dudas que casi todos tienen</h2>
     </div>
 
