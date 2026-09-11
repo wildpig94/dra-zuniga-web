@@ -304,13 +304,15 @@
     font-size:2.5rem;font-weight:800;letter-spacing:1px;
     background:rgba(255,255,255,.09);
   }
-  /* Ojo grande: sustituye al hueco de foto, se lee como decisión de diseño */
-  .ojo-hero{
-    display:block;width:min(78%,300px);height:auto;margin:0 auto;
-    color:#fff;opacity:.92;
-    filter:drop-shadow(0 10px 26px rgba(0,0,0,.22));
+  /* El panel del héroe lleva el eslogan, no un símbolo: la tipografía
+     hace el trabajo y el sitio se sostiene sin un solo gráfico. */
+  .portrait-quote{
+    position:relative;z-index:1;text-align:center;
+    font-family:var(--display);font-weight:600;line-height:1.14;
+    font-size:clamp(1.5rem,3.4vw,2.35rem);letter-spacing:-.015em;
+    color:#fff;max-width:15ch;
   }
-  .portrait .ojo-hero{margin-bottom:6px}
+  .portrait-quote em{font-style:italic;color:var(--teal-300)}
   .portrait .quote{margin-top:14px;font-size:1.02rem;font-weight:600;max-width:24ch;margin-inline:auto;opacity:.95}
   .badge-float{
     position:absolute;bottom:20px;left:20px;right:20px;z-index:2;
@@ -698,7 +700,7 @@
         <a class="btn btn-ghost btn-lg" href="#ubicacion">Cómo llegar</a>
       </div>
 
-<p class="lede">Pon tu salud visual en manos de un experto. Diagnóstico, tratamiento y microcirugía ocular con equipo de diagnóstico especializado.</p>
+<p class="lede">Diagnóstico, tratamiento y microcirugía ocular, con equipo especializado y explicado sin tecnicismos.</p>
 
       <ul class="chips">
         <li>
@@ -718,12 +720,8 @@
 
     <div class="portrait rise">
       <div class="inner">
-        <svg class="ojo-hero" viewBox="0 0 240 150" aria-hidden="true">
-          <path d="M12 75C64 20 176 20 228 75 176 130 64 130 12 75Z" fill="none"
-                stroke="currentColor" stroke-width="9" stroke-linejoin="round"/>
-          <circle cx="120" cy="75" r="33" fill="none" stroke="currentColor" stroke-width="9"/>
-          <circle cx="120" cy="75" r="12" fill="currentColor"/>
-        </svg>
+        <p class="portrait-quote">Pon tu salud visual
+          <em>en manos de un experto.</em></p>
         <p class="quote">"Pon tu salud visual en manos de un experto."</p>
       </div>
       <div class="badge-float">
@@ -880,12 +878,7 @@
 
     <div class="portrait rise" style="aspect-ratio:1/1;background:linear-gradient(155deg,var(--teal-600),var(--teal-900))">
       <div class="inner">
-        <svg class="ojo-hero" viewBox="0 0 240 150" aria-hidden="true">
-          <path d="M12 75C64 20 176 20 228 75 176 130 64 130 12 75Z" fill="none"
-                stroke="currentColor" stroke-width="9" stroke-linejoin="round"/>
-          <circle cx="120" cy="75" r="33" fill="none" stroke="currentColor" stroke-width="9"/>
-          <circle cx="120" cy="75" r="12" fill="currentColor"/>
-        </svg>
+        <p class="portrait-quote">La salud visual <em>no espera.</em></p>
         <p class="quote" style="margin-top:18px">"La salud visual no espera."</p>
       </div>
     </div>
