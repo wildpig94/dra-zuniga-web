@@ -240,7 +240,13 @@
     font-size:2.5rem;font-weight:800;letter-spacing:1px;
     background:rgba(255,255,255,.09);
   }
-  .portrait .note{font-size:.79rem;letter-spacing:.13em;text-transform:uppercase;opacity:.72;font-weight:700}
+  /* Ojo grande: sustituye al hueco de foto, se lee como decisión de diseño */
+  .ojo-hero{
+    display:block;width:min(78%,300px);height:auto;margin:0 auto;
+    color:#fff;opacity:.92;
+    filter:drop-shadow(0 10px 26px rgba(0,0,0,.22));
+  }
+  .portrait .ojo-hero{margin-bottom:6px}
   .portrait .quote{margin-top:14px;font-size:1.02rem;font-weight:600;max-width:24ch;margin-inline:auto;opacity:.95}
   .badge-float{
     position:absolute;bottom:20px;left:20px;right:20px;z-index:2;
@@ -324,7 +330,7 @@
     display:grid;place-items:center;
   }
   .alert .warn svg{width:30px;height:30px}
-  .alert h2{font-size:clamp(1.35rem,2.6vw,1.85rem);color:#7c3d06;margin-bottom:12px}
+  .alert h2{font-size:clamp(1.6rem,3.6vw,2.5rem);color:#7c3d06;margin-bottom:12px;letter-spacing:-.02em}
   .alert p{color:#6b4a20}
   .alert p + p{margin-top:12px}
 
@@ -410,10 +416,12 @@
     box-shadow:0 0 14px rgba(20,184,166,.34);
   }
   .logo-mark svg{width:37px;height:37px;display:block}
-  .logo-mark--sm{width:44px;height:44px}
-  .logo-mark--sm svg{width:31px;height:31px}
-  .logo-mark--lg{width:70px;height:70px}
-  .logo-mark--lg svg{width:50px;height:50px}
+  /* Jerarquía: discreto en el encabezado, pequeño en el pie.
+     El protagonista del héroe es el ojo grande (.ojo-hero). */
+  .logo-mark--sm{width:36px;height:36px}
+  .logo-mark--sm svg{width:25px;height:25px}
+  .logo-mark--lg{width:56px;height:56px}
+  .logo-mark--lg svg{width:40px;height:40px}
 
   /* ── Pie de página ──────────────────────────────────────────── */
   footer.site{
@@ -427,11 +435,13 @@
   .pie-marca{display:flex;align-items:center;gap:15px}
   .pie-marca strong{display:block;font-size:1.2rem;letter-spacing:1px}
   .pie-marca .rol{display:block;font-size:.85rem;color:#8fd8ce;margin-top:3px;font-family:inherit}
-  .pie-datos{text-align:right;font-size:.9rem;color:#b6e6df}
-  .pie-datos p{margin:0 0 6px}
-  .pie-datos a{color:#5eead4;text-decoration:none;display:inline-block;padding:6px 0;margin-right:15px}
-  .pie-datos a:last-child{margin-right:0}
-  .pie-datos a:hover{color:#fff;text-decoration:underline}
+  .pie-acciones{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .pie-linea{
+    margin-top:26px;padding-top:18px;border-top:1px solid rgba(255,255,255,.14);
+    font-size:.82rem;color:#8fd8ce;text-align:center;font-family:inherit;line-height:1.7;
+  }
+  .pie-linea a{color:#5eead4;text-decoration:none}
+  .pie-linea a:hover{color:#fff;text-decoration:underline}
   @media (max-width:760px){
     footer.site .pie-grid{flex-direction:column;text-align:center;align-items:center}
     .pie-datos{text-align:center}
@@ -439,6 +449,19 @@
   }
 
   /* ── WhatsApp flotante ──────────────────────────────────────── */
+  .btn-pie-ghost{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:15px 24px;border-radius:999px;font-weight:700;font-size:1rem;
+    text-decoration:none;color:#d6f5f0;border:2px solid rgba(255,255,255,.30);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    transition:background .2s ease,border-color .2s ease;
+  }
+  .btn-pie-ghost:hover{background:rgba(255,255,255,.12);border-color:#fff;color:#fff}
+  /* footer.site a tiene más especificidad y pintaba el texto del botón de claro */
+  footer.site .pie-acciones .btn-wa{color:#08301a}
+  footer.site .pie-acciones .btn-wa:hover{color:#08301a}
+  .pie-acciones .btn{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+
   .wa-float{
     position:fixed;right:20px;bottom:20px;z-index:80;
     display:inline-flex;align-items:center;gap:11px;
@@ -463,7 +486,7 @@
     .split{grid-template-columns:1fr}
     .loc{grid-template-columns:1fr}
     .alert{grid-template-columns:1fr;gap:18px}
-    .brand span{display:none}
+    .brand .txt span{display:none}   /* solo el subtítulo; el isotipo se queda */
     .header-cta .btn-ghost{display:none}
     /* El badge flotante tapaba la cita del retrato: aquí pasa a flujo normal */
     .portrait{display:flex;flex-direction:column;justify-content:center;padding:26px 22px}
@@ -474,6 +497,12 @@
   }
   @media (max-width:620px){
     body{font-size:18px}
+    /* Pie compacto: botones en una fila y tipografía menor */
+    footer.site{padding:32px 0 96px}
+    footer.site .pie-grid{gap:16px}
+    .pie-acciones{width:100%;gap:10px;flex-wrap:nowrap}
+    .pie-acciones .btn, .btn-pie-ghost{flex:1 1 0;min-width:0;padding:13px 12px;font-size:.92rem;text-align:center}
+    .pie-linea{margin-top:18px;padding-top:14px;font-size:.76rem;line-height:1.6}
     .topbar{font-size:.79rem}
     .topbar .addr{display:none}
     .hero .actions .btn{width:100%}
@@ -597,8 +626,13 @@
 
     <div class="portrait rise">
       <div class="inner">
-        <span class="logo-mark logo-mark--lg" style="margin:0 auto 18px"><svg viewBox="0 0 100 100" aria-hidden="true"><ellipse cx="50" cy="50" rx="45" ry="25" fill="none" stroke="#0b3f3c" stroke-width="4.5"/><text x="50" y="62" font-size="34" font-weight="bold" fill="#0b3f3c" text-anchor="middle" font-family="Arial, Helvetica, sans-serif">OZ</text></svg></span>
-        <div class="note" aria-hidden="true">Espacio para tu foto</div>
+        <svg class="ojo-hero" viewBox="0 0 240 150" aria-hidden="true">
+          <path d="M10 75C60 18 180 18 230 75 180 132 60 132 10 75Z" fill="none"
+                stroke="currentColor" stroke-width="9" stroke-linejoin="round"/>
+          <circle cx="120" cy="75" r="35" fill="currentColor" opacity=".15"/>
+          <text x="120" y="91" font-size="47" font-weight="bold" fill="currentColor"
+                text-anchor="middle" font-family="Arial, Helvetica, sans-serif">Z</text>
+        </svg>
         <p class="quote">"Pon tu salud visual en manos de un experto."</p>
       </div>
       <div class="badge-float">
@@ -753,8 +787,14 @@
 
     <div class="portrait rise" style="aspect-ratio:1/1;background:linear-gradient(155deg,var(--teal-600),var(--teal-900))">
       <div class="inner">
-        <div class="note" aria-hidden="true">Espacio para foto del consultorio</div>
-        <p class="quote" style="margin-top:16px">"La salud visual no espera."</p>
+        <svg class="ojo-hero" viewBox="0 0 240 150" aria-hidden="true">
+          <path d="M10 75C60 18 180 18 230 75 180 132 60 132 10 75Z" fill="none"
+                stroke="currentColor" stroke-width="9" stroke-linejoin="round"/>
+          <circle cx="120" cy="75" r="35" fill="currentColor" opacity=".15"/>
+          <text x="120" y="91" font-size="47" font-weight="bold" fill="currentColor"
+                text-anchor="middle" font-family="Arial, Helvetica, sans-serif">Z</text>
+        </svg>
+        <p class="quote" style="margin-top:18px">"La salud visual no espera."</p>
       </div>
     </div>
   </div>
@@ -780,7 +820,7 @@
 </section>
 
 <!-- ══ Confianza ══ -->
-<section class="section" id="confianza" style="padding-top:0">
+<section class="section" id="confianza">
   <div class="wrap">
     <div class="cred rise">
       <h2>Formación y credenciales</h2>
@@ -917,23 +957,24 @@
     <div class="pie-grid">
 
       <div class="pie-marca">
-        <span class="logo-mark logo-mark--lg"><svg viewBox="0 0 100 100" aria-hidden="true"><ellipse cx="50" cy="50" rx="45" ry="25" fill="none" stroke="#0b3f3c" stroke-width="4.5"/><text x="50" y="62" font-size="34" font-weight="bold" fill="#0b3f3c" text-anchor="middle" font-family="Arial, Helvetica, sans-serif">OZ</text></svg></span>
+        <span class="logo-mark logo-mark--sm" aria-hidden="true"><svg viewBox="0 0 100 100" aria-hidden="true"><ellipse cx="50" cy="50" rx="45" ry="25" fill="none" stroke="#0b3f3c" stroke-width="4.5"/><text x="50" y="62" font-size="34" font-weight="bold" fill="#0b3f3c" text-anchor="middle" font-family="Arial, Helvetica, sans-serif">OZ</text></svg></span>
         <span>
-          <strong>DRA. CRISTINA ZÚÑIGA</strong>
-          <span class="rol">MÉDICO CIRUJANO OFTALMÓLOGO</span>
+          <strong>Dra. Cristina Zúñiga</strong>
+          <span class="rol">Oftalmóloga · Apatzingán</span>
         </span>
       </div>
 
-      <div class="pie-datos">
-        <p>Céd. Prof. 1357548 | Céd. de Esp. 3182007</p>
-        <p>Francisco J. Múgica 449, Col. Centro, Apatzingán, Mich.</p>
-        <p>
-          <a href="https://wa.me/524535311006?text=Hola%20doctora%20Cristina%2C%20quiero%20agendar%20una%20consulta." target="_blank" rel="noopener">WhatsApp: 453 531 1006</a>
-          <a href="https://www.facebook.com/profile.php?id=615840879737508" target="_blank" rel="noopener">Facebook</a>
-        </p>
+      <div class="pie-acciones">
+        <a class="btn btn-wa" href="https://wa.me/524535311006?text=Hola%20doctora%20Cristina%2C%20quiero%20agendar%20una%20consulta." target="_blank" rel="noopener">Agendar por WhatsApp</a>
+        <a class="btn-pie-ghost" href="https://www.google.com/maps/search/?api=1&query=Francisco+J.+M%C3%BAgica+449%2C+Col.+Centro%2C+Apatzing%C3%A1n%2C+Michoac%C3%A1n" target="_blank" rel="noopener">Ver ubicación</a>
       </div>
 
     </div>
+
+    <p class="pie-linea">
+      Francisco J. Múgica 449, Col. Centro, Apatzingán, Mich. · <a href="tel:+524535311006">453 531 1006</a><br>
+      Céd. Prof. 1357548 · Céd. de Esp. 3182007
+    </p>
   </div>
 </footer>
 
