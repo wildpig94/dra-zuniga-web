@@ -6,7 +6,7 @@
 <title>Dra. Cristina Zúñiga Avilés — Oftalmóloga en Apatzingán, Michoacán</title>
 <meta name="description" content="Oftalmóloga en Apatzingán, Michoacán. Dra. Cristina Zúñiga Avilés: examen de la vista, microcirugía ocular y salud visual infantil. Agenda tu consulta.">
 <meta name="theme-color" content="#0f766e">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22%230b3f3c%22/%3E%3Cellipse%20cx%3D%2250%22%20cy%3D%2250%22%20rx%3D%2236%22%20ry%3D%2221%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%226%22/%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20font-size%3D%2230%22%20font-weight%3D%22bold%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%3EOZ%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2226%22%20fill%3D%22%230B3F3C%22/%3E%3Cpath%20d%3D%22M16%2060C40%2036%2080%2036%20104%2060%2080%2084%2040%2084%2016%2060Z%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%228%22%20stroke-linejoin%3D%22round%22/%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2214%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%228%22/%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%225%22%20fill%3D%22%23fff%22/%3E%3C/svg%3E">
 <meta name="robots" content="index,follow">
 <!-- canonical: se añade cuando el dominio real esté registrado y sirviendo -->
 
@@ -464,19 +464,12 @@
   .legal{opacity:.7;font-size:.84rem;margin-top:8px}
 
   /* ── Isotipo: ojo con la Z ──────────────────────────────────── */
-  .logo-mark{
-    width:52px;height:52px;border-radius:50%;flex:none;
-    background:radial-gradient(circle,#fff 42%,#ccf5ef 100%);
-    display:grid;place-items:center;
-    box-shadow:0 0 14px rgba(20,184,166,.34);
-  }
-  .logo-mark svg{width:37px;height:37px;display:block}
-  /* Jerarquía: discreto en el encabezado, pequeño en el pie.
-     El protagonista del héroe es el ojo grande (.ojo-hero). */
-  .logo-mark--sm{width:36px;height:36px}
-  .logo-mark--sm svg{width:25px;height:25px}
-  .logo-mark--lg{width:56px;height:56px}
-  .logo-mark--lg svg{width:40px;height:40px}
+  /* Marca: el ojo dibujado como forma de almendra — un ojo real termina en
+     punta. La elipse era lo que lo hacía parecer hecho en Paint.
+     Sin letras dentro: la marca la firma la tipografía. */
+  .ojo-marca{ width:44px; height:auto; flex:none; display:block; color:var(--brand) }
+  .ojo-marca--sm{ width:34px }
+  .ojo-marca--pie{ width:40px; color:var(--brand-soft) }
 
   /* ── Pie de página ──────────────────────────────────────────── */
   footer.site{
@@ -655,7 +648,12 @@
 <header class="site">
   <div class="wrap">
     <a class="brand" href="#inicio">
-      <span class="logo-mark logo-mark--sm" aria-hidden="true"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="45" ry="25" fill="none" stroke="#0b3f3c" stroke-width="4.5"/><text x="50" y="62" font-size="34" font-weight="bold" fill="#0b3f3c" text-anchor="middle" font-family="Arial, Helvetica, sans-serif">OZ</text></svg></span>
+      <svg class="ojo-marca ojo-marca--sm" viewBox="0 0 120 74" aria-hidden="true">
+          <path d="M6 37C32 11 88 11 114 37 88 63 32 63 6 37Z" fill="none"
+                stroke="currentColor" stroke-width="6" stroke-linejoin="round"/>
+          <circle cx="60" cy="37" r="15" fill="none" stroke="currentColor" stroke-width="6"/>
+          <circle cx="60" cy="37" r="5.5" fill="currentColor"/>
+        </svg>
       <span class="txt">
         <strong>Dra. Cristina Zúñiga Avilés</strong>
         <span>Oftalmóloga · Apatzingán</span>
@@ -707,11 +705,10 @@
     <div class="portrait rise">
       <div class="inner">
         <svg class="ojo-hero" viewBox="0 0 240 150" aria-hidden="true">
-          <path d="M10 75C60 18 180 18 230 75 180 132 60 132 10 75Z" fill="none"
+          <path d="M12 75C64 20 176 20 228 75 176 130 64 130 12 75Z" fill="none"
                 stroke="currentColor" stroke-width="9" stroke-linejoin="round"/>
-          <circle cx="120" cy="75" r="35" fill="currentColor" opacity=".15"/>
-          <text x="120" y="91" font-size="47" font-weight="bold" fill="currentColor"
-                text-anchor="middle" font-family="Arial, Helvetica, sans-serif">Z</text>
+          <circle cx="120" cy="75" r="33" fill="none" stroke="currentColor" stroke-width="9"/>
+          <circle cx="120" cy="75" r="12" fill="currentColor"/>
         </svg>
         <p class="quote">"Pon tu salud visual en manos de un experto."</p>
       </div>
@@ -870,11 +867,10 @@
     <div class="portrait rise" style="aspect-ratio:1/1;background:linear-gradient(155deg,var(--teal-600),var(--teal-900))">
       <div class="inner">
         <svg class="ojo-hero" viewBox="0 0 240 150" aria-hidden="true">
-          <path d="M10 75C60 18 180 18 230 75 180 132 60 132 10 75Z" fill="none"
+          <path d="M12 75C64 20 176 20 228 75 176 130 64 130 12 75Z" fill="none"
                 stroke="currentColor" stroke-width="9" stroke-linejoin="round"/>
-          <circle cx="120" cy="75" r="35" fill="currentColor" opacity=".15"/>
-          <text x="120" y="91" font-size="47" font-weight="bold" fill="currentColor"
-                text-anchor="middle" font-family="Arial, Helvetica, sans-serif">Z</text>
+          <circle cx="120" cy="75" r="33" fill="none" stroke="currentColor" stroke-width="9"/>
+          <circle cx="120" cy="75" r="12" fill="currentColor"/>
         </svg>
         <p class="quote" style="margin-top:18px">"La salud visual no espera."</p>
       </div>
@@ -1049,7 +1045,12 @@
     <div class="pie-grid">
 
       <div class="pie-marca">
-        <span class="logo-mark logo-mark--sm" aria-hidden="true"><svg viewBox="0 0 100 100" aria-hidden="true"><ellipse cx="50" cy="50" rx="45" ry="25" fill="none" stroke="#0b3f3c" stroke-width="4.5"/><text x="50" y="62" font-size="34" font-weight="bold" fill="#0b3f3c" text-anchor="middle" font-family="Arial, Helvetica, sans-serif">OZ</text></svg></span>
+        <svg class="ojo-marca ojo-marca--sm" viewBox="0 0 120 74" aria-hidden="true">
+          <path d="M6 37C32 11 88 11 114 37 88 63 32 63 6 37Z" fill="none"
+                stroke="currentColor" stroke-width="6" stroke-linejoin="round"/>
+          <circle cx="60" cy="37" r="15" fill="none" stroke="currentColor" stroke-width="6"/>
+          <circle cx="60" cy="37" r="5.5" fill="currentColor"/>
+        </svg>
         <span>
           <strong>Dra. Cristina Zúñiga</strong>
           <span class="rol">Oftalmóloga · Apatzingán</span>
